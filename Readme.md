@@ -1,4 +1,4 @@
-Neste repositório tem a internção de compartilhar alguns de meus projetos em linguagem de programação Java. 
+Neste repositório tem a intenção de compartilhar alguns de meus projetos em linguagem de programação Java. 
 
 Status: Em construção.
 
