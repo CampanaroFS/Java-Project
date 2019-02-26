@@ -1,0 +1,55 @@
+package Exer_Banco;
+
+public class Conta {
+
+	String titular;
+	int numero;
+	String agencia;
+	double saldo;
+	Data dataAbertura;
+	double rendimento;
+
+	public boolean saca(double valor) {
+		if (this.saldo < valor) {
+			System.out.println("Saldo insuficiente.");
+			return false;
+		} else {
+			this.saldo -= valor;
+			// System.out.println("Saque efetuado com sucesso.");
+			return true;
+		}
+	}
+
+	void deposita(double valor) {
+		this.saldo += valor;
+	}
+
+	double calculaRendimento() {
+		this.rendimento = this.saldo * 0.1;
+		return this.rendimento;
+	}
+
+	boolean transferePara(Conta Conta, double valor) {
+		boolean sacou = this.saca(valor);
+		if (sacou == true) {
+			Conta.deposita(valor);
+			System.out.println("Transferência efetuada com sucesso.");
+			return true;
+		} else {
+			System.out.println("Transferência não efetuada.");
+			return false;
+		}
+	}
+
+	String recuperaDadosParaImpressao() {
+		String dados = "Titular: " + this.titular;
+		dados += "\nNumero: " + this.numero;
+		dados += "\nAgência: " + this.agencia;
+		dados += "\nData de Abertura: " + this.dataAbertura.formatar();
+		dados += "\nSaldo: R$" + this.saldo;
+		dados += "\nRendimento Mensal: " + this.calculaRendimento();
+		return dados;
+	}
+
+}
+

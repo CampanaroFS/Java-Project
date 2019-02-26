@@ -1,0 +1,74 @@
+package Exer_Banco;
+
+public class Main {
+
+	public static void main(String[] args) {
+		Data data = new Data();
+
+		Conta c1 = new Conta();
+		c1.titular = "Fulano";
+		c1.numero = 3332559;
+		c1.agencia = "8011";
+		c1.saldo = 100.0;
+		c1.dataAbertura = data;
+		c1.dataAbertura.dia = 01;
+		c1.dataAbertura.mes = 04;
+		c1.dataAbertura.ano = 1990;
+
+		c1.deposita(100);
+		System.out.println("Saldo: R$" + c1.saldo);
+		System.out.println("Rendimento mensal: R$" + c1.calculaRendimento());
+
+		Conta c2 = new Conta();
+		c2.titular = "Ciclano";
+		c2.numero = 91649;
+		c2.agencia = "0123";
+		// c2.dataAbertura = "2/2/1992";
+		c2.saldo = 500.0;
+		c2.dataAbertura = data;
+		c2.dataAbertura.dia = 2;
+		c2.dataAbertura.mes = 2;
+		c2.dataAbertura.ano = 1992;
+
+		c2.deposita(200);
+		System.out.println("Saldo: R$" + c2.saldo);
+		c2.saca(300);
+		System.out.println("Saldo: R$" + c2.saldo);
+		c2.transferePara(c1, 200);
+		System.out.println("Saldo c2: R$" + c2.saldo);
+		System.out.println("Saldo c1: R$" + c1.saldo);
+
+		Conta c3 = new Conta();
+		c3.titular = "Eumesmo";
+		c3.numero = 1258;
+		c3.agencia = "0164";
+		// c3.dataAbertura = "23/04/1990";
+		c3.saldo = 0;
+		c3.dataAbertura = data;
+		c3.dataAbertura.dia = 23;
+		c3.dataAbertura.mes = 04;
+		c3.dataAbertura.ano = 1990;
+
+		c3.transferePara(c2, 100);
+		c3.deposita(100);
+		System.out.println("Saldo c3: R$" + c3.saldo);
+		c3.transferePara(c2, 100);
+
+		// Imprimindo todos os dados
+		System.out.println("\n");
+		System.out.println(c1.recuperaDadosParaImpressao() + "\n"); // Quando declarado antes de refenciar ocorre um
+																	// erro.
+		System.out.println(c2.recuperaDadosParaImpressao() + "\n");
+		System.out.println(c3.recuperaDadosParaImpressao() + "\n");
+		
+		Conta c4 = new Conta();
+		c4.saldo = 100;
+		System.out.println(c4.saldo);
+		
+		c4.saldo = -200;
+		System.out.println(c4.saldo);
+
+	}
+
+}
+
